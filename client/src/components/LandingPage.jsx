@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import CreateRoomModal from './CreateRoomModal';
 
 const LandingPage = () => {
+  const [isRoomModalOpen, setIsRoomModalOpen] = useState(false);
+
   return (
     <div className="bg-background text-on-surface selection:bg-primary/30 min-h-screen flex flex-col">
+      <CreateRoomModal isOpen={isRoomModalOpen} onClose={() => setIsRoomModalOpen(false)} />
       <header className="w-full top-0 sticky z-50 bg-[#131313] border-none shadow-none">
         <nav className="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto font-headline tracking-tight text-on-surface">
           <div className="flex items-center gap-8">
@@ -16,7 +20,12 @@ const LandingPage = () => {
           </div>
           <div className="flex items-center gap-4">
             <Link to="/lobby" className="hidden lg:flex px-4 py-2 bg-surface-container-highest text-on-surface rounded-lg font-bold hover:text-[#ff9f4a] transition-colors duration-200 scale-95 active:scale-90">Live Auctions</Link>
-            <button className="px-6 py-2 bg-primary text-on-primary-container rounded-lg font-extrabold scale-95 active:scale-90 transition-transform">Create Room</button>
+            <button 
+              onClick={() => setIsRoomModalOpen(true)}
+              className="px-6 py-2 bg-primary text-on-primary-container rounded-lg font-extrabold scale-95 active:scale-90 transition-transform"
+            >
+              Create Room
+            </button>
             <div className="flex items-center gap-3 ml-4">
               <span className="material-symbols-outlined text-gray-400 hover:text-[#ff9f4a] cursor-pointer">notifications</span>
               <span className="material-symbols-outlined text-gray-400 hover:text-[#ff9f4a] cursor-pointer">account_circle</span>
@@ -127,9 +136,9 @@ const LandingPage = () => {
                             </div>
                             <span className="text-sm text-on-surface-variant font-medium">Joined the lobby recently</span>
                         </div>
-                        <Link to="/lobby" className="w-full sm:w-auto px-12 py-5 bg-gradient-to-tr from-primary to-primary-container text-on-primary-fixed font-black text-lg rounded-xl shadow-xl shadow-primary/10 hover:shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98] text-center inline-block">
+                        <button onClick={() => setIsRoomModalOpen(true)} className="w-full sm:w-auto px-12 py-5 bg-gradient-to-tr from-primary to-primary-container text-on-primary-fixed font-black text-lg rounded-xl shadow-xl shadow-primary/10 hover:shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98] text-center inline-block">
                             Create Room
-                        </Link>
+                        </button>
                     </div>
                 </div>
               </div>

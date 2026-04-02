@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import CreateRoomModal from './CreateRoomModal';
+import PlayerOptimization from './PlayerOptimization';
 
 const LiveAuctionLobby = () => {
+  const [isRoomModalOpen, setIsRoomModalOpen] = useState(false);
+  const [isOptimizationOpen, setIsOptimizationOpen] = useState(false);
+
   return (
     <div className="antialiased font-body bg-background text-on-surface min-h-screen">
+      <CreateRoomModal isOpen={isRoomModalOpen} onClose={() => setIsRoomModalOpen(false)} />
+      <PlayerOptimization isOpen={isOptimizationOpen} onClose={() => setIsOptimizationOpen(false)} />
       <aside className="hidden md:flex flex-col h-screen p-4 bg-[#131313] w-64 left-0 fixed shadow-2xl font-headline text-sm z-40">
         <div className="mb-10 px-4">
           <div className="flex items-center gap-3">
@@ -68,7 +75,10 @@ const LiveAuctionLobby = () => {
             <button className="hidden sm:flex items-center px-4 py-1.5 rounded-md bg-primary/10 text-primary font-bold text-sm hover:bg-primary/20 transition-colors">
               Live Auctions
             </button>
-            <button className="flex items-center px-5 py-2 rounded-md bg-primary text-on-primary font-bold text-sm transform scale-95 active:scale-90 transition-transform">
+            <button 
+              onClick={() => setIsRoomModalOpen(true)}
+              className="flex items-center px-5 py-2 rounded-md bg-primary text-on-primary font-bold text-sm transform scale-95 active:scale-90 transition-transform"
+            >
               Create Room
             </button>
             <div className="flex items-center gap-3 ml-2">
@@ -255,9 +265,12 @@ const LiveAuctionLobby = () => {
               <h4 className="text-xl font-headline font-bold">Discover</h4>
               <div className="glass-effect rounded-3xl p-6 border border-primary/10 space-y-4">
                 <p className="text-xs font-bold text-primary uppercase tracking-widest">New Feature</p>
-                <h5 className="text-lg font-headline font-extrabold leading-tight">Advanced Proxy Bidding Now Active</h5>
-                <p className="text-sm text-on-surface-variant">Set your ceiling prices and let the Kinetic engine handle the speed. Never miss a player again.</p>
-                <button className="text-xs font-bold uppercase tracking-widest text-on-surface flex items-center gap-1 group">
+                <h5 className="text-lg font-headline font-extrabold leading-tight">Advanced Player Optimization Active</h5>
+                <p className="text-sm text-on-surface-variant">See expected values, track optimal bids, and view AI-predicted squads. Never miss a player again.</p>
+                <button 
+                  onClick={() => setIsOptimizationOpen(true)}
+                  className="text-xs font-bold uppercase tracking-widest text-on-surface flex items-center gap-1 group"
+                >
                   Learn More 
                   <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
                 </button>

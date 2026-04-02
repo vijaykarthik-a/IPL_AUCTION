@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useParams } from 'react-router-dom';
+import { socket } from '../socket';
 
 // Mock Socket for now if backend isn't running yet
 const mockPlayer = {
@@ -10,10 +12,48 @@ const mockPlayer = {
   basePrice: "2.00 Cr",
 };
 
-export default function AuctionDashboard({ socket }) {
+export default function AuctionDashboard() {
+  const { roomId } = useParams();
   const [currentBid, setCurrentBid] = useState(5.5); // Current Bid in Cr
   const [timer, setTimer] = useState(30);
   const [bids, setBids] = useState([{ team: "CSK", amount: 5.5 }, { team: "MI", amount: 5.0 }]);
+  const [roomState, setRoomState] = useState(null);
+
+  useEffect(() => {
+    if (!socket.connected) {
+      socket.connect();
+    }
+
+    if (roomId) {
+      socket.emit('join_room', roomId);
+    }
+
+    const handleRoomJoined = (room) => {
+      setRoomState(room);
+      if (room.currentAuctionState) {
+        setCurrentBid(room.currentAuctionState.currentBid);
+      }
+    };
+
+    const handleAuctionUpdate = (state) => {
+      setCurrentBid(state.currentBid);
+      setTimer(state.timer);
+    };
+
+    const handleBidLog = (log) => {
+      setBids(prev => [log, ...prev]);
+    };
+
+    socket.on('room_joined', handleRoomJoined);
+    socket.on('auctionUpdate', handleAuctionUpdate);
+    socket.on('bid_log', handleBidLog);
+
+    return () => {
+      socket.off('room_joined', handleRoomJoined);
+      socket.off('auctionUpdate', handleAuctionUpdate);
+      socket.off('bid_log', handleBidLog);
+    };
+  }, [roomId]);
 
   // Simulate Timer
   useEffect(() => {
@@ -28,10 +68,7 @@ export default function AuctionDashboard({ socket }) {
 
   const handleBid = (increment) => {
     const newBid = currentBid + increment;
-    setCurrentBid(newBid);
-    setTimer(30); // reset timer
-    setBids(prev => [{ team: "MY TEAM", amount: newBid }, ...prev]);
-    // socket?.emit('place_bid', { teamId: 'my_team', bidAmount: newBid * 10000000 });
+    socket.emit('place_bid', { roomId, teamId: 'MY TEAM', bidAmount: newBid });
   };
 
   return (
@@ -39,7 +76,7 @@ export default function AuctionDashboard({ socket }) {
       {/* Top Navbar */}
       <header className="bg-slate-900 border-b border-slate-800 p-4 flex justify-between items-center shadow-lg relative z-10">
         <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500 tracking-wider">
-          AUCTION WAR ROOM
+          {roomState ? roomState.name : "AUCTION WAR ROOM"}
         </h1>
         <div className="flex gap-4 items-center">
           <div className="bg-slate-800 px-4 py-2 rounded-lg border border-slate-700 shadow-inner">
