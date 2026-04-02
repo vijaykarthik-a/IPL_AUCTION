@@ -1,9 +1,78 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@config "./tailwind.config.js";
+
+@theme {
+  --color-surface-container-low: #131313;
+  --color-on-secondary-container: #fff6f0;
+  --color-primary-fixed-dim: #ea8000;
+  --color-on-tertiary: #665100;
+  --color-on-surface-variant: #adaaaa;
+  --color-primary: #ff9f4a;
+  --color-tertiary: #ffe393;
+  --color-secondary: #ffa52a;
+  --color-surface-container-high: #20201f;
+  --color-tertiary-fixed-dim: #efc52b;
+  --color-on-tertiary-fixed-variant: #675200;
+  --color-background: #0e0e0e;
+  --color-surface-tint: #ff9f4a;
+  --color-surface-dim: #0e0e0e;
+  --color-surface-bright: #2c2c2c;
+  --color-on-tertiary-container: #5c4900;
+  --color-on-primary-container: #442100;
+  --color-error-container: #b92902;
+  --color-inverse-primary: #914d00;
+  --color-inverse-surface: #fcf9f8;
+  --color-tertiary-fixed: #ffd33a;
+  --color-on-primary-fixed-variant: #512800;
+  --color-surface-container-highest: #262626;
+  --color-surface-variant: #262626;
+  --color-primary-fixed: #fd8b00;
+  --color-secondary-fixed-dim: #ffb55c;
+  --color-error: #ff7351;
+  --color-surface: #0e0e0e;
+  --color-tertiary-dim: #efc52b;
+  --color-on-background: #ffffff;
+  --color-secondary-fixed: #ffc78a;
+  --color-secondary-dim: #ef981a;
+  --color-on-tertiary-fixed: #453600;
+  --color-on-error: #450900;
+  --color-inverse-on-surface: #565555;
+  --color-outline-variant: #484847;
+  --color-tertiary-container: #ffd33a;
+  --color-on-primary-fixed: #180800;
+  --color-secondary-container: #875200;
+  --color-on-secondary-fixed-variant: #744600;
+  --color-surface-container: #1a1a1a;
+  --color-primary-container: #fd8b00;
+  --color-on-secondary: #512f00;
+  --color-on-surface: #ffffff;
+  --color-on-secondary-fixed: #4d2d00;
+  --color-on-error-container: #ffd2c8;
+  --color-primary-dim: #ed8200;
+  --color-surface-container-lowest: #000000;
+  --color-error-dim: #d53d18;
+  --color-on-primary: #532a00;
+  --color-outline: #767575;
+
+  --font-headline: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+}
 
 @layer base {
   body {
-    @apply bg-slate-950 text-white font-sans antialiased;
+    background-color: #0e0e0e;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
   }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.glass-effect {
+  background: rgba(38, 38, 38, 0.7);
+  backdrop-filter: blur(12px);
 }
