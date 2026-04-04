@@ -64,7 +64,7 @@ const LiveAuctionLobby = () => {
       <header className="w-full top-0 sticky z-30 bg-[#131313] border-none font-headline tracking-tight text-on-surface">
         <div className="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto">
           <div className="flex items-center gap-8 md:pl-64">
-            <span className="text-xl font-bold tracking-tighter text-[#ff9f4a] md:hidden">The Kinetic Vault</span>
+            <span className="text-xl font-bold tracking-tighter text-[#ff9f4a] md:hidden">Auction Room</span>
             <div className="hidden lg:flex items-center bg-surface-container-highest px-4 py-1.5 rounded-full border border-outline-variant/20">
               <span className="material-symbols-outlined text-on-surface-variant text-lg mr-2">search</span>
               <input className="bg-transparent border-none focus:outline-none focus:ring-0 text-sm w-48 text-on-surface placeholder:text-on-surface-variant" placeholder="Search rooms..." type="text"/>
@@ -310,7 +310,7 @@ const LiveAuctionLobby = () => {
           <a className="text-xs text-gray-600 font-inter hover:text-white transition-colors" href="#">Twitter</a>
           <a className="text-xs text-gray-600 font-inter hover:text-white transition-colors" href="#">Discord</a>
         </div>
-        <p className="text-xs text-gray-500 font-inter">Made with ❤️ in the Kinetic Vault</p>
+        <p className="text-xs text-gray-500 font-inter">Made with ❤️ by VK using AI's</p>
       </footer>
     </div>
   );

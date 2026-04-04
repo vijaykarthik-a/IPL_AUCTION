@@ -11,7 +11,7 @@ const LandingPage = () => {
       <header className="w-full top-0 sticky z-50 bg-[#131313] border-none shadow-none">
         <nav className="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto font-headline tracking-tight text-on-surface">
           <div className="flex items-center gap-8">
-            <span className="text-xl font-bold tracking-tighter text-[#ff9f4a]">The Kinetic Vault</span>
+            <span className="text-xl font-bold tracking-tighter text-[#ff9f4a]">Auction Room</span>
             <div className="hidden md:flex gap-6">
               <Link to="/lobby" className="text-[#ff9f4a] font-bold border-b-2 border-[#ff9f4a] pb-1">New Game</Link>
               <a className="text-gray-400 font-medium hover:text-[#ff9f4a] transition-colors duration-200" href="#">Recent Rooms</a>
@@ -198,7 +198,7 @@ const LandingPage = () => {
           <a className="text-xs text-gray-600 font-inter hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">Twitter</a>
           <a className="text-xs text-gray-600 font-inter hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">Discord</a>
         </div>
-        <div className="text-xs text-gray-500 font-inter opacity-80">Made with ❤️ in the Kinetic Vault</div>
+        <div className="text-xs text-gray-500 font-inter opacity-80">Made with ❤️ by VK using AI's</div>
       </footer>
     </div>
   );
