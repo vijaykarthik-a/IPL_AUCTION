@@ -28,6 +28,11 @@ const io = new Server(server, {
   transports: ['websocket', 'polling'] // Support both WebSocket and polling
 });
 
+// Log CORS configuration
+console.log('[Socket.IO] CORS Origin:', NODE_ENV === 'production' 
+  ? FRONTEND_URL.split(',').map(url => url.trim()).join(', ') 
+  : 'Allow all (*)');
+
 app.get('/health', (req, res) => {
   res.send({ status: 'Server is healthy and running.' });
 });

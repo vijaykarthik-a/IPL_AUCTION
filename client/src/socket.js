@@ -12,11 +12,36 @@ const getSocketURL = () => {
   return backendURL;
 };
 
-export const socket = io(getSocketURL(), {
+const socketURL = getSocketURL();
+
+// Log for debugging
+if (typeof window !== 'undefined') {
+  console.log('[Socket.IO] Configured URL:', socketURL);
+  console.log('[Socket.IO] Environment:', import.meta.env.MODE);
+}
+
+export const socket = io(socketURL, {
   autoConnect: false,
   reconnection: true,
   reconnectionDelay: 1000,
   reconnectionDelayMax: 5000,
   reconnectionAttempts: 5,
   transports: ['websocket', 'polling'] // Support both WebSocket and polling
+});
+
+// Connection logging
+socket.on('connect', () => {
+  console.log('[Socket.IO] ✅ Connected', socket.id);
+});
+
+socket.on('disconnect', () => {
+  console.log('[Socket.IO] ❌ Disconnected');
+});
+
+socket.on('connect_error', (error) => {
+  console.error('[Socket.IO] Connection Error:', error);
+});
+
+socket.on('error', (error) => {
+  console.error('[Socket.IO] Error:', error);
 });
