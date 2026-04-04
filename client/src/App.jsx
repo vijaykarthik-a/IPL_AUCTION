@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuctionDashboard from './components/AuctionDashboard';
 import LandingPage from './components/LandingPage';
 import LiveAuctionLobby from './components/LiveAuctionLobby';
+import PlayerList from './components/PlayerList';
 import './index.css';
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/lobby" element={<LiveAuctionLobby />} />
-        <Route path="/auction" element={<AuctionDashboard />} />
+        <Route path="/auction/:roomId?" element={<AuctionDashboard />} />
+        <Route path="/players" element={<PlayerList />} />
       </Routes>
     </BrowserRouter>
   );

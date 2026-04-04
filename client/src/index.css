@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
-@config "../tailwind.config.js";
-
-@theme {
+:root {
   --color-surface-container-low: #131313;
   --color-on-secondary-container: #fff6f0;
   --color-primary-fixed-dim: #ea8000;
@@ -62,9 +60,7 @@
 
 @layer base {
   body {
-    background-color: #0e0e0e;
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
+    @apply bg-slate-950 text-white font-sans antialiased;
   }
 }
 

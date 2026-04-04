@@ -32,6 +32,10 @@ const LiveAuctionLobby = () => {
             <span className="material-symbols-outlined">gavel</span>
             <span>Live Auctions</span>
           </Link>
+          <Link to="/players" className="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-[#262626] hover:text-white transition-all duration-200 ease-in-out rounded-lg">
+            <span className="material-symbols-outlined">groups</span>
+            <span>Player Pool</span>
+          </Link>
           <a className="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-[#262626] hover:text-white transition-all duration-200 ease-in-out rounded-lg" href="#">
             <span className="material-symbols-outlined">history</span>
             <span>History</span>
