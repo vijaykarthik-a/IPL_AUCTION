@@ -198,7 +198,6 @@ const LiveAuctionLobby = () => {
             </div>
           </section>
         </div>
-      </main>
 
       <footer className="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 bg-[#0e0e0e]/90 backdrop-blur-xl border-t border-[#262626]/50 z-50 rounded-t-2xl shadow-[0px_-8px_24px_rgba(0,0,0,0.4)]">
         <a className="flex flex-col items-center justify-center text-[#ff9f4a] bg-[#ff9f4a]/10 rounded-xl px-3 py-1 scale-98 transition-transform duration-150" href="#">
@@ -228,9 +227,8 @@ const LiveAuctionLobby = () => {
         </div>
         <p className="text-xs text-gray-500 font-inter">Made with ❤️ by VK using AI's</p>
       </footer>
-        </div>
-      </Layout>
+    </Layout>
     );
-  };
+};
 
 export default LiveAuctionLobby;
