@@ -68,7 +68,7 @@ export default function AuctionDashboard() {
               <span className="material-symbols-outlined text-primary" style={{fontVariationSettings: "'FILL' 1"}}>bolt</span>
             </div>
             <div>
-              <h1 className="text-primary font-black uppercase tracking-widest text-lg">Kinetic Vault</h1>
+              <h1 className="text-primary font-black uppercase tracking-widest text-lg">Auction Room</h1>
               <p className="text-on-surface-variant text-[10px] uppercase tracking-tighter">High-Performance Trading</p>
             </div>
           </div>

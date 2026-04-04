@@ -41,7 +41,7 @@ const LandingPage = () => {
                 <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>bolt</span>
               </div>
               <div>
-                <div className="text-[#ff9f4a] font-black uppercase text-xs">Kinetic Vault</div>
+                <div className="text-[#ff9f4a] font-black uppercase text-xs">Auction Room</div>
                 <div className="text-gray-500 text-[10px]">High-Performance Trading</div>
               </div>
             </div>
